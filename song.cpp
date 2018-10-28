@@ -1,3 +1,5 @@
+//Add documentation here
+
 #include <iostream>
 #include "song.h"
 
@@ -76,8 +78,8 @@ using namespace std;
 
    //This method overloads the "<" operator, which is useful for sorting in the UtPod
    bool Song::operator <(Song const &comp) {
-      cout << "in less than" << endl;
       //Converts the length of the artist's name to an int
+      //Also selects the smaller artist name length so that it's not comparing nonexistent characters
       size_t length1a = (comp.artist).length();
       size_t length1b = artist.length();
       int artistLength;
@@ -87,19 +89,30 @@ using namespace std;
       else {
          artistLength = length1b;
       }
-      cout << "length is: " << artistLength << endl;
       //Goes character by character through the artist names and compares      
       for(int i = 0; i < artistLength; i++) {
-         cout << "in for loop, wtf" << endl;
-         cout << "artist[i] is " << artist[i] << ", comp.artist[i] is " << comp.artist[i] << endl; 
          if(artist[i] < comp.artist[i]) {
             return true;
          }
+         if(artist[i] > comp.artist[i]) {
+            return false;
+         }
+      }
+
+      //Determines if one artist name  is the same as the other but with additional characters
+      //Only useful for very specific edge cases
+      //For example, if one artist were asdf and the other were asdf1234
+      if((comp.artist).length() > artist.length()) {
+         return true;
+      }
+      else if(artist.length() > (comp.artist).length()) {
+         return false;
       }
 
       //If the artist's name is less than the other, the following code is ignored 
 
       //Converts the length of the title to an int
+      //Also selects the smaller title length so that it's not comparing nonexistent characters
       size_t length2a = (comp.title).length();
       size_t length2b = title.length();
       int titleLength;
@@ -115,6 +128,19 @@ using namespace std;
          if(title[j] < comp.title[j]) {
             return true;
          }
+         if(title[j] > comp.title[j]) {
+            return false;
+         }
+      }
+ 
+      //Determines if one title is the same as the other but with additional characters
+      //Only useful for very specific edge cases
+      //For example, if one title were abcd and the other were abcd1234
+      if((comp.title).length() > title.length()) {
+         return true;
+      }
+      else if(title.length() > (comp.title).length()) {
+         return false;
       }
 
       //If the title is less than the other, the following code is ignored
@@ -124,7 +150,6 @@ using namespace std;
          return true;
       }
       else {
-         cout << "return false wtf wtf wtf" << endl;
          return false;//Only occurs if the artist, then title, then size
                       //is not "less than" the other's
       }
@@ -135,6 +160,7 @@ using namespace std;
    bool Song::operator >(Song const &comp) {
 
       //Converts the length of the artist's name to an int
+      //Also selects the smaller artist name length so that it's not comparing nonexistent characters 
       size_t length1a = (comp.artist).length();
       size_t length1b = artist.length();
       int artistLength;
@@ -150,11 +176,23 @@ using namespace std;
          if(artist[i] > comp.artist[i]) {
             return true;
          }
+         if(artist[i] < comp.artist[i]) {
+            return false;
+         }
+      }
+
+      //Determines if one artist name is the same as the other but with additional characters
+      if((comp.artist).length() > artist.length()) {
+         return false;
+      }
+      else if(artist.length() > (comp.artist).length()) {
+         return true;
       }
 
       //If the artist's name is greater than the other, the following code is ignored
       
       //Converts the length of the title to an int
+      //Also selects the smaller title length so that it's not comparing nonexistent characters 
       size_t length2a = (comp.title).length();
       size_t length2b = title.length();
       int titleLength;
@@ -170,7 +208,19 @@ using namespace std;
          if(title[j] > comp.title[j]) {
             return true;
          }
+         if(title[j] < comp.title[j]) {
+            return false;
+         }
       }
+
+      //Determines if one title is the same as the other but with additional characters
+      if((comp.title).length() > title.length()) {
+         return false;
+      }
+      else if(title.length() > (comp.title).length()) {
+         return true;
+      }
+
 
       //If the title is greater than the other, the following code is ignored
 

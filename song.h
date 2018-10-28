@@ -1,4 +1,4 @@
-//DOCUMENT HERE
+//Add documentation here
 
 #ifndef SONG_H
 #define SONG_H
@@ -11,9 +11,9 @@ class Song {
 
    private:
 
-      string title;
-      string artist;
-      int size;
+      string title;//Contains the title of the song
+      string artist;//Contains the song's artist
+      int size;//Contains the size of the song in MB
 
    public:
 
@@ -22,20 +22,20 @@ class Song {
       //The size must be greater than zero
       Song(string title, string artist, int size);
 
-      string getTitle();
-      string getArtist();
-      int getSize();
+      string getTitle();//Method that returns the title of the song
+      string getArtist();//Method that returns the artist of the song
+      int getSize();//Method that returns the size of the song
 
-      void setTitle(string newTitle);
-      void setArtist(string newArtist);
-      void setSize(int newSize);
+      void setTitle(string newTitle);//Method that changes the title of the song
+      void setArtist(string newArtist);//Method that changes the artist of the song
+      void setSize(int newSize);//Method that changes the size of the song
 
-      bool operator ==(Song const &eq);
-      bool operator <(Song const &comp);
-      bool operator >(Song const &comp);
-      bool operator !=(Song const &eq);
+      bool operator ==(Song const &eq);//Overloads the "==" operator
+      bool operator <(Song const &comp);//Overloads the "<" operator
+      bool operator >(Song const &comp);//Overloads the ">" operator
+      bool operator !=(Song const &eq);//Overloads the "!=" operator
 
-      ~Song();
+      ~Song();//The deconstructor
 
 };
 
