@@ -33,6 +33,7 @@ class Song {
       bool operator ==(Song const &eq);
       bool operator <(Song const &comp);
       bool operator >(Song const &comp);
+      bool operator !=(Song const &eq);
 
       ~Song();
 
