@@ -5,6 +5,7 @@
 #include <string.h>
 #include <iostream>
 #include "UtPod.h"
+#include "song.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ UtPod::UtPod(int size) {
 
 //method adds song into UTPod
 int UtPod::addSong(const Song &s) {
-    if (getRemainingMemory() >= s->size) {
+    if (getRemainingMemory() >= s.getSize()) {
         //adding new song
         SongNode* newSong;
         newSong = new SongNode;
@@ -35,7 +36,7 @@ int UtPod::addSong(const Song &s) {
         newSong->next = songs;
 
         //updating head and UTPod remaining memory
-        remainingMem -= s->size;
+        remainingMem -= s.getSize();
         songs = newSong;
 
         std::cout << "Song added successfully.\n";
@@ -66,7 +67,7 @@ int UtPod::removeSong(const Song &s) {
     else
         previous->next = current->next;
 
-    remainingMem += s->size;
+    remainingMem += s.getSize();
     delete current;
     std::cout << "Song found. Removal successful\n";
     return SUCCESS;
@@ -77,7 +78,7 @@ void UtPod::showSongList() {
     //traverses LL
     SongNode* tempHead = songs;
     while (tempHead != NULL) {
-        std::cout << tempHead->s->title << ", " << tempHead->s->artist << ", " << tempHead->s->size << " MB\n";
+        std::cout << tempHead->s.getTitle() << ", " << tempHead->s.getArtist() << ", " << tempHead->s.getSize() << " MB\n";
         tempHead = tempHead->next;
     }
 }
@@ -137,4 +138,8 @@ void UtPod::sortSongList() {
 
 void UtPod::shuffle() {
 
+}
+
+UtPod::~UtPod() {
+    //Destructor
 }
