@@ -9,12 +9,10 @@
 
 using namespace std;
 
-int remainingMem;
-
 //default constructor
 UtPod::UtPod() {
     memSize = MAX_MEMORY;
-    remainingMem = getTotalMemory();
+    songs = NULL;
 }
 
 //overloaded construction, takes user input for size
@@ -23,11 +21,13 @@ UtPod::UtPod(int size) {
         memSize = MAX_MEMORY;
     else
         memSize = size;
-    remainingMem = getTotalMemory();
+
+    songs = NULL;
 }
 
 //method adds song into UTPod
 int UtPod::addSong(const Song &s) {
+    //checks if there is enough space in UtPod to add the requested song
     if (getRemainingMemory() >= s.getSize()) {
         //adding new song
         SongNode* newSong;
@@ -35,8 +35,7 @@ int UtPod::addSong(const Song &s) {
         newSong->s = s;
         newSong->next = songs;
 
-        //updating head and UTPod remaining memory
-        remainingMem -= s.getSize();
+        //updating head
         songs = newSong;
 
         std::cout << "Song added successfully.\n";
@@ -67,7 +66,6 @@ int UtPod::removeSong(const Song &s) {
     else
         previous->next = current->next;
 
-    remainingMem += s.getSize();
     delete current;
     std::cout << "Song found. Removal successful\n";
     return SUCCESS;
@@ -91,21 +89,43 @@ void UtPod::clearMemory() {
         songs = songs->next;
         delete temp;
     }
-    remainingMem = getTotalMemory();
+}
+
+//method calculates total memory used in UtPod
+int UtPod::getMemoryUsed() {
+    int totalMemUsed = 0;
+    SongNode* tempHead = songs;
+
+    //traverse LL accumulating the amount of memory used in UtPod
+    while (tempHead != NULL) {
+        totalMemUsed += songs->s.getSize();
+        tempHead = tempHead->next;
+    }
+    return totalMemUsed;
+}
+
+//method finds the number of songs in UtPod
+int UtPod::getNumSongs() {
+    SongNode* tempHead = songs;
+    int numSongs = 0;
+
+    //finds number of songs in UtPod
+    for(; tempHead != NULL; tempHead = tempHead->next, numSongs++);
+
+    return numSongs;
 }
 
 int UtPod::getRemainingMemory() {
-    return remainingMem;
+    int totalMemUsed = getMemoryUsed();
+    int totalMem = getTotalMemory();
+    return (totalMem - totalMemUsed);
 }
 
 //method sorts UtPod in ascending order of song size
 void UtPod::sortSongList() {
     SongNode* tempHead = songs;
-    Song tempSong;
-    int numSongs = 0;
-
-    //finds number of songs in UtPod
-    for(; tempHead != NULL; tempHead = tempHead->next, numSongs++);
+    Song tempSong("", "", 0);
+    int numSongs = getNumSongs();
 
     //bubble sort algorithm
     for (int i = 0; i < numSongs; i++) {
@@ -141,5 +161,5 @@ void UtPod::shuffle() {
 }
 
 UtPod::~UtPod() {
-    //Destructor
+    //The destructor
 }
