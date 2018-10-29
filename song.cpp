@@ -29,7 +29,7 @@ using namespace std;
    }
 
    //This method returns the size of the song
-   int Song::getSize() {
+   int Song::getSize() const {
 
       return size;
 
