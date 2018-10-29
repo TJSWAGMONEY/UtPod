@@ -16,7 +16,9 @@ class Song {
       int size;//Contains the size of the song in MB
 
    public:
-
+      //Default Constructor
+      Song();
+   
       //Preconditions:
       //The title and artist cannot be blank
       //The size must be greater than zero
