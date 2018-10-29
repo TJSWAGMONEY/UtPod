@@ -5,6 +5,15 @@
 
 using namespace std;
 
+   //Default Constructor
+   Song::Song() {
+    
+      title = "";
+      artist = "";
+      size = 0;
+    
+   }
+
    //Constructor for the Song class
    Song::Song(string title, string artist, int size) {
 
