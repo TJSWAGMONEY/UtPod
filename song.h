@@ -24,7 +24,7 @@ class Song {
 
       string getTitle();//Method that returns the title of the song
       string getArtist();//Method that returns the artist of the song
-      int getSize();//Method that returns the size of the song
+      int getSize() const;//Method that returns the size of the song
 
       void setTitle(string newTitle);//Method that changes the title of the song
       void setArtist(string newArtist);//Method that changes the artist of the song
