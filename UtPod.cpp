@@ -20,7 +20,7 @@ UtPod::UtPod(int size) {
     if (size > MAX_MEMORY || size <= 0)
         memSize = MAX_MEMORY;
     else
-        memSize = size;
+        this->memSize = size;
 
     songs = NULL;
 }
