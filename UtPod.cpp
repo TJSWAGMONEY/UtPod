@@ -1,6 +1,3 @@
-//
-// Created by Lin on 10/24/2018.
-//
 #include <cstdlib>
 #include <string.h>
 #include <iostream>
@@ -37,11 +34,9 @@ int UtPod::addSong(const Song &s) {
         //updating head
         songs = newSong;
 
-        std::cout << "Song added successfully.\n";
         return SUCCESS;
     }
 
-    std::cout << "Song add was unsuccessful. Not enough memory.\n";
     return NO_MEMORY;
 }
 
@@ -54,10 +49,8 @@ int UtPod::removeSong(const Song &s) {
     for (; current != NULL && current->s != s; previous = current, current = current->next);
 
     //case song was not found
-    if (current == NULL) {
-        std::cout << "Song NOT found. Removal unsuccessful\n";
+    if (current == NULL)
         return NOT_FOUND;
-    }
 
     //case 1st song in LL is the target
     if (previous == NULL)
@@ -66,7 +59,7 @@ int UtPod::removeSong(const Song &s) {
         previous->next = current->next;
 
     delete current;
-    std::cout << "Song found. Removal successful\n";
+
     return SUCCESS;
 }
 
