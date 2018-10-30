@@ -11,8 +11,8 @@ class Song {
 
    private:
 
-      string title;//Contains the title of the song
       string artist;//Contains the song's artist
+      string title;//Contains the song's title
       int size;//Contains the size of the song in MB
 
    public:
@@ -22,7 +22,7 @@ class Song {
       //Preconditions:
       //The title and artist cannot be blank
       //The size must be greater than zero
-      Song(string title, string artist, int size);
+      Song(string artist, string title, int size);
 
       string getTitle();//Method that returns the title of the song
       string getArtist();//Method that returns the artist of the song

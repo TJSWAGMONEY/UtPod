@@ -8,17 +8,17 @@ using namespace std;
    //Default Constructor
    Song::Song() {
     
-      title = "";
       artist = "";
+      title = "";
       size = 0;
     
    }
 
    //Constructor for the Song class
-   Song::Song(string title, string artist, int size) {
+   Song::Song(string artist, string title, int size) {
 
-      this->title = title;
       this->artist = artist;
+      this->title = title;
       this->size = size;
 
    }
