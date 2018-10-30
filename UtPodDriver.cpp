@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     while(closeProgram != 1) {
 
         cout << "What would you like to do? ";
-        cin >> mainInput;
+        getline(cin, mainInput);
         cout << endl;
 
         if(mainInput == "adds") {
@@ -40,19 +40,12 @@ int main(int argc, char *argv[]) {
             string songTitle;
             string strSize;
 
-            cin.clear();
-            cin.sync();
-            cin.ignore();
             cout << "Artist: ";
             getline(cin, songArtist);
 
-            cin.clear();
-            cin.ignore();
             cout << "Title: ";
             getline(cin, songTitle);
 
-            cin.clear();
-            cin.ignore();
             cout << "Size: ";
             getline(cin, strSize);
             cout << endl;
@@ -76,19 +69,12 @@ int main(int argc, char *argv[]) {
             string remTitle;
             string strRemSize;
 
-            cin.clear();
-            cin.sync();
-            cin.ignore();
             cout << "Artist: ";
             getline(cin, remArtist);
 
-            cin.clear();
-            cin.ignore();
             cout << "Title: ";
             getline(cin, remTitle);
 
-            cin.clear();
-            cin.ignore();
             cout << "Size: ";
             getline(cin, strRemSize);
             cout << endl;
