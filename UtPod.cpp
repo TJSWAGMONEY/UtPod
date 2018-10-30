@@ -30,8 +30,7 @@ int UtPod::addSong(const Song &s) {
     //checks if there is enough space in UtPod to add the requested song
     if (getRemainingMemory() >= s.getSize()) {
         //adding new song
-        SongNode* newSong;
-        newSong = new SongNode;
+        SongNode* newSong = new SongNode;
         newSong->s = s;
         newSong->next = songs;
 
@@ -156,8 +155,30 @@ void UtPod::sortSongList() {
         }
     }*/
 
-void UtPod::shuffle() {
+//swaps head with randomly found node in LL
+void UtPod::swap(SongNode* swapNode) {
+    Song tempSong = songs->s;
+    songs->s = swapNode->s;
+    swapNode->s = tempSong;
+}
 
+//shuffles LL 10*n number of time, where n is the number of songs
+void UtPod::shuffle() {
+    int numSongs = getNumSongs();
+    int idx;
+    SongNode* swapNode;
+
+    //swaps 10*n times
+    for (int i = 0; i < 10*numSongs; i++) {
+        idx = (rand() % numSongs) + 1;
+        swapNode = songs;
+
+        //traverses LL, locates swap node
+        for (int j = 0; j < idx; j++)
+            swapNode = swapNode->next;
+
+        swap(swapNode);
+    }
 }
 
 UtPod::~UtPod() {

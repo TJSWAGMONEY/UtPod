@@ -1,7 +1,10 @@
-//DOCUMENT HERE
+//
+// Created by Lin on 10/24/2018.
+//
 
-#ifndef UTPOD_H
-#define UTPOD_H
+#ifndef LAB5_UTPOD_H
+#define LAB5_UTPOD_H
+
 #include "song.h"
 
 //UtPod class declaration
@@ -28,6 +31,9 @@ private:
 
     //private method used to find number of songs in UtPod
     int getNumSongs();
+
+    //private method used to swap two song nodes
+    void swap(SongNode* swap2);
 
 public:
     //Default constructor
@@ -128,4 +134,4 @@ public:
 
 };
 
-#endif
+#endif //LAB5_UTPOD_H
