@@ -14,6 +14,7 @@ You will want to do more complete testing.
 #include "song.h"
 #include "UtPod.h"
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -21,8 +22,7 @@ int main(int argc, char *argv[]) {
 
    UtPod t;//Creates the UtPod and names it t
    
-   int currentTime = time(0);
-   srand(currentTime);
+   srand(time(0));
 
    //Output giving instructions for user
    system("clear");
@@ -52,11 +52,14 @@ int main(int argc, char *argv[]) {
          int songSize;
          
          cout << "Artist: ";
-         getline(cin, songArtist);
+         getline(cin,songArtist);//broken
+         cin.ignore();
+
          cout << "Title: ";
-         getline(cin, songTitle);
-         cout << "Size: "; cin >>
-         songSize; cout << endl;
+         getline(cin,songTitle);//broken
+
+         cout << "Size: ";
+         cin >> songSize; cout << endl;
          
          Song newSong(songArtist, songTitle, songSize);
          int addCheck = t.addSong(newSong);
@@ -74,11 +77,25 @@ int main(int argc, char *argv[]) {
 
       if(mainInput == "rems") {
 
-         //
+         string remArtist;
+         string remTitle;
+         int remSize;
+         
+         cout << "Artist: ";
+         getline(cin,remArtist);//broken
+         cin.ignore();
+
+         cout << "Title: ";
+         getline(cin,remTitle);//broken
+
+         cout << "Size: ";
+         cin >> remSize; cout << endl;
+
+         //search linked list for song matching criteria and remove it if it exists
 
       }
 
-      if(mainInput == "shuf") {
+      if(mainInput == "shuf" || mainInput == "shuffle") {
 
          t.shuffle();
          cout << "Shuffled the songs in the UtPod." << endl;
