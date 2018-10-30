@@ -42,14 +42,17 @@ int main(int argc, char *argv[]) {
 
             cin.clear();
             cin.sync();
+            cin.ignore();
             cout << "Artist: ";
             getline(cin, songArtist);
 
             cin.clear();
+            cin.ignore();
             cout << "Title: ";
             getline(cin, songTitle);
 
             cin.clear();
+            cin.ignore();
             cout << "Size: ";
             getline(cin, strSize);
             cout << endl;
@@ -75,14 +78,17 @@ int main(int argc, char *argv[]) {
 
             cin.clear();
             cin.sync();
+            cin.ignore();
             cout << "Artist: ";
             getline(cin, remArtist);
 
             cin.clear();
+            cin.ignore();
             cout << "Title: ";
             getline(cin, remTitle);
 
             cin.clear();
+            cin.ignore();
             cout << "Size: ";
             getline(cin, strRemSize);
             cout << endl;
