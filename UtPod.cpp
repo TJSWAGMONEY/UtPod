@@ -68,7 +68,7 @@ void UtPod::showSongList() {
     //traverses LL
     SongNode* tempHead = songs;
     while (tempHead != NULL) {
-        std::cout << tempHead->s.getTitle() << ", " << tempHead->s.getArtist() << ", " << tempHead->s.getSize() << " MB\n";
+        std::cout << tempHead->s.getArtist() << ", " << tempHead->s.getTitle() << ", " << tempHead->s.getSize() << " MB\n";
         tempHead = tempHead->next;
     }
 }
@@ -135,18 +135,6 @@ void UtPod::sortSongList() {
         tempHead = songs;
     }
 }
-
-/*    //bubble sort algorithm
-    //SongNode* tempNode = NULL;
-    for (int i = 0; i < numSongs; i++) {
-        for (int j = 0; j < numSongs; j++) {
-            if (tempHead->s > tempHead->next->s) {
-                tempNode = tempHead;
-                tempHead = tempHead->next;
-                tempHead->next = tempNode;
-            }
-        }
-    }*/
 
 //swaps head with randomly found node in LL
 void UtPod::swap(SongNode* swapNode) {
