@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+
 //default constructor
 UtPod::UtPod() {
     memSize = MAX_MEMORY;
@@ -151,7 +153,7 @@ void UtPod::shuffle() {
 
     //swaps 10*n times
     for (int i = 0; i < 10*numSongs; i++) {
-        idx = (rand() % numSongs) + 1;
+        idx = rand() % numSongs;
         swapNode = songs;
 
         //traverses LL, locates swap node
