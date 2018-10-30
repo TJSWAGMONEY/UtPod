@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         getline(cin, mainInput);
         cout << endl;
 
-        if(mainInput == "adds") {
+        if(mainInput == "adds" || mainInput == "add" || mainInput == "addSong") {
             string songArtist;
             string songTitle;
             string strSize;
@@ -53,18 +53,32 @@ int main(int argc, char *argv[]) {
             int songSize;
             istringstream(strSize) >> songSize;
 
-            Song newSong(songArtist, songTitle, songSize);
-            int addCheck = t.addSong(newSong);
+            if(songSize < 1) {
+               cout << "That is not a valid song size." << endl;
+            }
+            else if(songArtist == "") {
+               cout << "That is not a valid artist name." << endl;
+            }
+            else if(songTitle == "") {
+               cout << "That is not a valid song title." << endl;
+            }
+            else {
 
-            if(addCheck == 0)
-                cout << "Song successfully added to UtPod." << endl;
-            else if(addCheck == -1)
-                cout << "There is not enough memory left in the UtPod to add the song." << endl;
-            else
-                cout << "Something went wrong with adding the song." << endl;
+               Song newSong(songArtist, songTitle, songSize);
+               int addCheck = t.addSong(newSong);
+
+               if(addCheck == 0)
+                  cout << "Song successfully added to UtPod." << endl;
+               else if(addCheck == -1)
+                  cout << "There is not enough memory left in the UtPod to add the song." << endl;
+               else
+                  cout << "Something went wrong with adding the song." << endl;
+
+           }
+
         }
 
-        if(mainInput == "rems") {
+        else if(mainInput == "rems" || mainInput == "rem" || mainInput == "removeSong") {
             string remArtist;
             string remTitle;
             string strRemSize;
@@ -93,39 +107,39 @@ int main(int argc, char *argv[]) {
                 cout << "Something went wrong with removing the song." << endl;
         }
 
-        if(mainInput == "shuf" || mainInput == "shuffle") {
+        else if(mainInput == "shuf" || mainInput == "shuffle") {
 
             t.shuffle();
             cout << "Shuffled the songs in the UtPod." << endl;
 
         }
 
-        if(mainInput == "show") {
+        else if(mainInput == "show" || mainInput == "showSongList") {
 
             t.showSongList();
 
         }
 
-        if(mainInput == "sort") {
+        else if(mainInput == "sort" || mainInput == "sortSongList") {
 
             t.sortSongList();
             cout << "Sorted the songs in the UtPod in ascending order." << endl;
 
         }
 
-        if(mainInput == "gett") {
+        else if(mainInput == "gett" || mainInput == "getTotalMemory") {
 
             cout << "The total memory of the UtPod is " << t.getTotalMemory() << " MB." << endl;
 
         }
 
-        if(mainInput == "getr") {
+        else if(mainInput == "getr" || mainInput == "getRemainingMemory") {
 
             cout << "There are " << t.getRemainingMemory() << " MB of memory remaining in the UtPod." << endl;
 
         }
 
-        if(mainInput == "inst") {
+        else if(mainInput == "inst" || mainInput == "i" || mainInput == "instructions") {
 
             system("clear");
             cout << "Instructions for using the UtPod:" << endl << endl;
@@ -141,9 +155,15 @@ int main(int argc, char *argv[]) {
 
         }
 
-        if(mainInput == "exit") {
+        else if(mainInput == "exit" || mainInput == "e" || mainInput == "quit" || mainInput == "q") {
 
             closeProgram = 1;
+
+        }
+
+        else {
+
+           cout << "Not a valid command." << endl;
 
         }
 
