@@ -92,7 +92,7 @@ int UtPod::getMemoryUsed() {
 
     //traverse LL accumulating the amount of memory used in UtPod
     while (tempHead != NULL) {
-        totalMemUsed += songs->s.getSize();
+        totalMemUsed += tempHead->s.getSize();
         tempHead = tempHead->next;
     }
     return totalMemUsed;
