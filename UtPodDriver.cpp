@@ -9,14 +9,24 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-
-    UtPod t;//Creates the UtPod and names it t
-
     srand(time(0));
+
+    string strPodSize;
+
+    //asks user to set the memory size of UtPod
+    cout << "UtPod Size: ";
+    getline(cin, strPodSize);
+    cout << endl;
+
+    int sizeOfUtPod;
+    istringstream(strPodSize) >> sizeOfUtPod;
+
+    UtPod t(sizeOfUtPod); //Creates the UtPod and names it t
 
     //Output giving instructions for user
     system("clear");
     cout << "Instructions for using the UtPod:" << endl << endl;
+    cout << "sets         sets memory of UtPod" << endl;
     cout << "adds         adds a song to the UtPod" << endl;
     cout << "rems         removes a song from the UtPod" << endl;
     cout << "shuf         shuffles the UtPod's song list" << endl;
@@ -54,27 +64,27 @@ int main(int argc, char *argv[]) {
             istringstream(strSize) >> songSize;
 
             if(songSize < 1) {
-               cout << "That is not a valid song size." << endl;
+                cout << "That is not a valid song size." << endl;
             }
             else if(songArtist == "") {
-               cout << "That is not a valid artist name." << endl;
+                cout << "That is not a valid artist name." << endl;
             }
             else if(songTitle == "") {
-               cout << "That is not a valid song title." << endl;
+                cout << "That is not a valid song title." << endl;
             }
             else {
 
-               Song newSong(songArtist, songTitle, songSize);
-               int addCheck = t.addSong(newSong);
+                Song newSong(songArtist, songTitle, songSize);
+                int addCheck = t.addSong(newSong);
 
-               if(addCheck == 0)
-                  cout << "Song successfully added to UtPod." << endl;
-               else if(addCheck == -1)
-                  cout << "There is not enough memory left in the UtPod to add the song." << endl;
-               else
-                  cout << "Something went wrong with adding the song." << endl;
+                if(addCheck == 0)
+                    cout << "Song successfully added to UtPod." << endl;
+                else if(addCheck == -1)
+                    cout << "There is not enough memory left in the UtPod to add the song." << endl;
+                else
+                    cout << "Something went wrong with adding the song." << endl;
 
-           }
+            }
 
         }
 
@@ -163,7 +173,7 @@ int main(int argc, char *argv[]) {
 
         else {
 
-           cout << "Not a valid command." << endl;
+            cout << "Not a valid command." << endl;
 
         }
 
