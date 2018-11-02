@@ -25,6 +25,29 @@ int main(int argc, char *argv[]) {
 
    system("clear");
 
+	cout << "Testing Overloaded UtPod Constructor" << endl;
+   UtPod t1(513);
+   t1.getTotalMemory();
+   cout << "Size 513 is too big, sets to 512 MB" << endl;
+
+   UtPod t2(0);
+   t2.getTotalMemory();
+   cout << "size 0 not allowed, sets to 512 MB" << endl;
+
+   UtPod t3(-1);
+   t3.getTotalMemory();
+   cout << "negative size is not allowed, sets to 512 MB" << endl;
+
+   UtPod t4(300);
+   t4.getTotalMemory();
+   cout << "size 300 is allowed, sets to 300 MB" << endl;
+
+   Song song0("Queen","Bohemian Rhapsody",400);
+   t4.removeSong(song0);
+   t4.addSong(song0);
+   t4.showSongList();
+   cout << "Edge Add and Remove" << endl;
+
    UtPod t;
    cout << endl << "Created UtPod of default size 512 MB." << endl << endl;
 
